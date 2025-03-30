@@ -11,7 +11,7 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 // Middleware cors & bodyparser 
 
 app.use(cors(  {
-    origin : process.env.CLIENT_URL || "*", 
+    origin : "*", 
     methods : ["GET", "PUT" , "DELETE" , "POST"], 
     allowedHeaders : ["Authorization", "Content-Type"]
 })); 
