@@ -6,7 +6,7 @@ import { validateEmail } from "../../utils/helper";
 import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../../context/UserContext";
 import uploadImage from "../../utils/uploadImage";
 function Signup() {
   const [profilePic, setProfilePic] = useState(null);
@@ -54,6 +54,7 @@ function Signup() {
       if (token) {
         localStorage.setItem("token", token); // save token to local storage
         updateUser(user); // update user in context
+
 
         navigate("/dashboard"); // redirect to dashboard page
       }

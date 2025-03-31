@@ -5,7 +5,7 @@ import Input from '../../components/Inputs/Input'
 import { validateEmail } from '../../utils/helper'
 import axiosInstance from '../../utils/axiosInstance'
 import { API_PATHS } from '../../utils/apiPaths'
-import { UserContext } from '../../context/userContext'
+import { UserContext } from '../../context/UserContext'
 function Login() {
   const [email, setEmail ] = useState(""); 
   const [password, setPassword] = useState(""); 
@@ -38,6 +38,7 @@ function Login() {
       const {token, user} = response.data;
       if(token) {
         localStorage.setItem("token", token); // save token to local storage
+        console.log("Login page" , user); 
         updateUser(user); // update user in context
 
         navigate("/dashboard"); // redirect to dashboard page
