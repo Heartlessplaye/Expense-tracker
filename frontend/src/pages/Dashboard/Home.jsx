@@ -9,6 +9,7 @@ import { IoMdCard } from "react-icons/io";
 import { addThosandsSeparator } from "../../utils/helper";
 import InfoCard from "../../components/Cards/InfoCard";
 import RecentTransactions from "../../components/Dashboard/RecentTransactions";
+import FinanceOverview from "../../components/Dashboard/FinanceOverview";
 function Home() {
   useUserAuth();
   const navigate = useNavigate();
@@ -63,6 +64,11 @@ function Home() {
           transactions = {dashboardData?.recentTransactions || []}
           onSeeMore = {() => navigate("/expense")}
           />
+          <FinanceOverview 
+          totalBalance = {dashboardData?.totalBalance || 0} 
+          totalExpense = {dashboardData?.totalExpense || 0} 
+          totalIncome = {dashboardData?.totalIncome || 0}
+          /> 
         </div>
       </div>
     </DashboardLayout>
