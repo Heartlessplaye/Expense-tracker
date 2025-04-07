@@ -19,7 +19,7 @@ const FinanceOverview = ({ totalBalance, totalIncome, totalExpense }) => {
         label="Total Balance"
         totalAmount={`$${totalBalance}`}
         colors={colors}
-        showTextAnchor
+        showTextAnchor = {true}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { useUserAuth } from "../../hooks/useUserAuth";
 import { API_PATHS } from "../../utils/apiPaths";
@@ -10,6 +10,10 @@ import { addThosandsSeparator } from "../../utils/helper";
 import InfoCard from "../../components/Cards/InfoCard";
 import RecentTransactions from "../../components/Dashboard/RecentTransactions";
 import FinanceOverview from "../../components/Dashboard/FinanceOverview";
+import ExpenseTransactions from "../../components/Dashboard/ExpenseTransactions";
+import Last30DaysExpenses from "../../components/Dashboard/Last30DaysExpenses";
+import RecentIncomeWithChart from "../../components/Dashboard/RecentIncomeWithChart";
+import RecentIncome from "../../components/Dashboard/RecentIncome";
 function Home() {
   useUserAuth();
   const navigate = useNavigate();
@@ -36,6 +40,8 @@ function Home() {
     fetchDashboardData();
     return () => {};
   }, []);
+  
+  
   return (
     <DashboardLayout activeMenu="Dashboard">
       <div className="my-5 mx-auto">
@@ -69,6 +75,22 @@ function Home() {
           totalExpense = {dashboardData?.totalExpense || 0} 
           totalIncome = {dashboardData?.totalIncome || 0}
           /> 
+          <ExpenseTransactions
+
+          transactions = {dashboardData?.last30DaysExpense?.transactions || []}
+          onSeeMore = {() => navigate("/expense")}
+          />
+          <Last30DaysExpenses
+          data = {dashboardData?.last30DaysExpense?.transactions || []}
+          />
+          <RecentIncomeWithChart
+          data = {dashboardData?.last60DaysIncome?.transactions.slice(0,5) || []}
+          totalIncome = {dashboardData?.totalIncome || 0}/>
+          <RecentIncome
+          data = {dashboardData?.last60DaysIncome?.transactions || []}
+          onSeeMore = {() => navigate("/income")}
+          />
+          
         </div>
       </div>
     </DashboardLayout>
