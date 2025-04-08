@@ -6,8 +6,10 @@ import { validateEmail } from "../../utils/helper";
 import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../../context/userContext";
 import uploadImage from "../../utils/uploadImage";
+
+
 function Signup() {
   const [profilePic, setProfilePic] = useState(null);
   const [fullName, setFullName] = useState("");
@@ -16,6 +18,7 @@ function Signup() {
   const [error, setError] = useState(null);
   const { updateUser } = useContext(UserContext); // get updateUser function from context
   const navigate = useNavigate();
+
   // Handle signup form submit
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -36,10 +39,9 @@ function Signup() {
     // signup api call
 
     try {
-
       // Upload profile picture to server if selected
-      if (profilePic) { 
-        const imgUploadResponse = await uploadImage(profilePic); 
+      if (profilePic) {
+        const imgUploadResponse = await uploadImage(profilePic);
         profileImageUrl = imgUploadResponse.imageUrl || "";
       }
 
@@ -47,20 +49,18 @@ function Signup() {
         fullName,
         email,
         password,
-        profileImageUrl
+        profileImageUrl,
       });
 
       const { token, user } = response.data;
       if (token) {
         localStorage.setItem("token", token); // save token to local storage
         updateUser(user); // update user in context
-
-
         navigate("/dashboard"); // redirect to dashboard page
       }
     } catch (error) {
-      if (error && error.response.data.message) {
-        setError(error.response.data.message); // set error message from server response
+      if (error && error?.response?.data.message) {
+        setError(error?.response?.data.message); // set error message from server response
       } else {
         setError("Something went wrong while signup. Please try again later.");
       }

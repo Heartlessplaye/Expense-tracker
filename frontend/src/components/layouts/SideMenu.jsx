@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../../context/userContext";
 import { SIDE_MENU_DATA } from "../../utils/data";
 import CharAvatar from "../Cards/CharAvatar";
 const SideMenu = ({ activeMenu }) => {
   const { user, clearUser } = useContext(UserContext);
   const navigate = useNavigate();
+
   const handleClick = (route) => {
-    if (route === "logout") {
+    
+   
+    if (route === "/logout") {
+      console.log("inside logout .... ");
       handleLogout();
       return;
     }
