@@ -11,7 +11,6 @@ const SideMenu = ({ activeMenu }) => {
       handleLogout();
       return;
     }
-    console.log(route);
     navigate(route);
   };
 
