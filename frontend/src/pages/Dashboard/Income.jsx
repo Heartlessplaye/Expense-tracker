@@ -33,7 +33,6 @@ function Income() {
       );
 
       if(response.data){
-        console.log("Income details fetched successfully", response?.data?.income);
         setIncomeData(response?.data?.income || []);
       }
     }

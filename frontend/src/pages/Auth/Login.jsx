@@ -38,7 +38,7 @@ function Login() {
       const {token, user} = response.data;
       if(token) {
         localStorage.setItem("token", token); // save token to local storage
-        console.log("Login page" , user); 
+        
         updateUser(user); // update user in context
 
         navigate("/dashboard"); // redirect to dashboard page

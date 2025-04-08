@@ -39,7 +39,7 @@ export const prepareIncomeBarChartData = (data = []) => {
 
   const chartData = sortedData.map((item) => (
    {
-    month : moment(item?.date).format('DD/MM'),
+    month : moment(item?.date).format('Do MMM'),
     amount : item?.amount,
     source : item?.source
    }

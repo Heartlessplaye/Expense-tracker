@@ -7,6 +7,7 @@ export const useUserAuth = () => {
   const { user, updateUser, clearUser } = useContext(UserContext);
   const navigate = useNavigate();
 
+  
   useEffect(() => {
     if (user) return;
     let isMounted = true;

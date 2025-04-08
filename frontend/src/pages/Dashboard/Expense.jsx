@@ -35,7 +35,7 @@ function Expense() {
       );
 
       if(response.data){
-        console.log("Expense details fetched successfully", response?.data?.expense);
+       
         setExpenseData(response?.data?.expense || []);
       }
     }
