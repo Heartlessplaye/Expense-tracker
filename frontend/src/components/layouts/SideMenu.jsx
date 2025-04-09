@@ -11,7 +11,7 @@ const SideMenu = ({ activeMenu }) => {
     
    
     if (route === "/logout") {
-      console.log("inside logout .... ");
+      
       handleLogout();
       return;
     }

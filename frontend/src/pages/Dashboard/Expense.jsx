@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useUserAuth } from '../../hooks/useUserAuth'
+// import { useUserAuth } from '../../hooks/useUserAuth'
 import DashboardLayout from '../../components/layouts/DashboardLayout'
 import { API_PATHS } from '../../utils/apiPaths';
 import axiosInstance from '../../utils/axiosInstance';
@@ -12,7 +12,7 @@ import DeleteAlert from '../../components/DeleteAlert';
 
 
 function Expense() {
-  useUserAuth();
+  // useUserAuth();
    const [expenseData, setExpenseData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [openDeleteAlert, setOpenDeleteAlert] = useState({
